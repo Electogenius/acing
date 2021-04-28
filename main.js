@@ -2,7 +2,6 @@ var e = ace.edit("editor");
 var settings = {
 	horizmode: false,
 	mode: "html",
-	theme: "nord_dark",
 	preview: {
 		pre: "",
 		post: "",
@@ -20,29 +19,23 @@ if (localStorage.getItem("settings") === null) {
 	settings = JSON.parse(localStorage.getItem("settings"))
 }
 
-e.setTheme("ace/theme/" + settings.theme);
+//pe.setTheme("ace/theme/" + settings.theme);
 e.session.setMode("ace/mode/" + settings.mode);
 
 function save() {
-	localStorage.setItem("code", e.getValue())
+	localStorage.setItem("code", e.getValue());
+	localStorage.setItem("editor", JSON.stringify(e.getOptions()))
 }
-
 function openSettings() {
 	var s = {}
 	var f = document.createElement("form")
 	f.id = "set"
-	f.innerHTML = "<h1>Settings</h1><small>Remove their values to see what the inputs are for. if you don't want to save what you have entered then refresh the page.</small>"
+	f.innerHTML = "<h1>Settings</h1><small>Remove their values to see what the inputs are for. If you don't want to save what you have entered then refresh the page. For more editor related settings, enter ctrl+',' or cmd+',' or use the ... button and select settings</small>"
 	s.m = document.createElement("input") //language mode
 	s.m.value = settings.mode
 	s.m.placeholder = "language mode (html, javascript, etc.)"
 	s.m.oninput = e => settings.mode = e.target.value.toLowerCase()
 	f.appendChild(s.m)
-	
-	s.t = document.createElement("input") //theme
-	s.t.value = settings.theme
-	s.t.placeholder = "ace syntax highlighting theme name"
-	s.t.oninput = e => settings.theme = e.target.value.toLowerCase()
-	f.appendChild(s.t)
 	
 	s.as = document.createElement("input") //autosave
 	s.as.type = "number"
@@ -114,7 +107,6 @@ var def =
 </body>
 
 </html>`
-//console.log(localStorage.getItem("code"))
 if (localStorage.getItem("code") !== null) {
 	e.setValue(localStorage.getItem("code"))
 } else {
@@ -125,13 +117,14 @@ e.setOptions({
 	enableLiveAutocompletion: true,
 	fontFamily: settings.font.family
 });
+//save()
 e.on("change", () => {
 	if (settings.live) {
 		i.srcdoc = settings.preview.pre + e.getValue() + settings.preview.post
 	}
 })
 if (settings.autosave) {
-	setTimeout(()=>setInterval(() => localStorage.setItem("code", e.getValue()), settings.autosave * 1000), 1000)
+	setTimeout(()=>setInterval(() => save(), settings.autosave * 1000), 1000)
 }
 i.srcdoc = settings.preview.pre + e.getValue() + settings.preview.post
 if(settings.horizmode){
@@ -143,3 +136,4 @@ if(settings.horizmode){
 	i.style.marginLeft = "49vw"
 }
 e.setFontSize(Number(settings.font.size))
+e.setOptions(JSON.parse(localStorage.getItem("editor")))
