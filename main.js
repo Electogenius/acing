@@ -11,7 +11,7 @@ var settings = {
 	autosave: 3,
 	font: {
 		size: 12,
-		family: "fantasy"
+		family: "monospace"
 	}
 }
 if (localStorage.getItem("settings") === null) {
