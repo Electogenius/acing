@@ -80,6 +80,12 @@ function openSettings() {
 	s.v.style.marginLeft = "90vw"
 	f.appendChild(s.l)
 	f.appendChild(s.v)
+	
+	s.t = document.createElement("input") //theme
+	s.t.value = settings.font.family
+	s.t.placeholder = "css font family name"
+	s.t.oninput = e => settings.font.family = e.target.value
+	f.appendChild(s.t)
 	//---x---x---x---//
 	s.s = document.createElement("button")
 	s.s.innerText = "save and close"
