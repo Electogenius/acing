@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<title>acing</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js" integrity="sha512-GZ1RIgZaSc8rnco/8CXfRdCpDxRCphenIiZ2ztLy3XQfCbQUSCuk8IudvNHxkRA3oUg6q0qejgN/qqyG1duv5Q==" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ext-language_tools.min.js" integrity="sha512-8qx1DL/2Wsrrij2TWX5UzvEaYOFVndR7BogdpOyF4ocMfnfkw28qt8ULkXD9Tef0bLvh3TpnSAljDC7uyniEuQ==" crossorigin="anonymous"></script>
+</head>
+<style>
+	body {
+		background-color: #222;
+		color: white;
+		font-family: -apple-system, sans-serif;
+		overflow: hidden
+	}
+
+	#editor {
+		position: absolute;
+		top: 30px;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		height: 40vh;
+		border: 1px solid white;
+	}
+
+	nav {
+		overflow: auto;
+		white-space: nowrap;
+		height: 30px;
+	}
+
+	btn {
+		padding: 0;
+		border: 1px solid #999;
+		background-color: #222;
+		margin-right: 5px;
+		border-radius: 5px;
+	}
+
+	iframe {
+		height: 40vh;
+		display: block;
+		margin-top: 45vh;
+		width: 98%;
+		margin-left: auto;
+		margin-right: auto;
+		border: 1px solid white;
+		background-color: white;
+	}
+
+	form {
+		position: absolute;
+		background-color: #222;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 200
+	}
+
+	input,
+	textarea {
+		font-family: monospace;
+		display: block;
+		width: 90vw;
+		background-color: black;
+		color: white;
+	}
+	#acing{
+		font-weight: bolder;
+		color: #05d;
+		float: right;
+		background-color: #999;
+		border: 1px solid black
+	}
+</style>
+
+<body>
+	<nav>
+		<btn onclick="save()">save</btn>
+		<btn onclick="openSettings()">settings</btn>
+		<btn onclick="e.undo()">undo</btn>
+		<btn onclick="e.redo()">redo</btn>
+		<btn onclick="i.srcdoc=e.getValue()">run</btn>
+		<btn id="acing"><u>Acing</u></btn>
+	</nav>
+	<div id="editor"></div>
+	<iframe id="i"></iframe>
+	<!-- Project -->
+	<script src="main.js"></script>
+</body>
+
+</html>
