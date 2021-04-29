@@ -11,7 +11,8 @@ var settings = {
 	font: {
 		size: 12,
 		family: "monospace"
-	}
+	},
+	eruda: true
 }
 if (localStorage.getItem("settings") === null) {
 	localStorage.setItem("settings", JSON.stringify(settings))
@@ -26,11 +27,16 @@ function save() {
 	localStorage.setItem("code", e.getValue());
 	localStorage.setItem("editor", JSON.stringify(e.getOptions()))
 }
+function preview() {
+	let x = ""
+	if(settings.eruda) x = "<script src='https://cdn.jsdelivr.net/npm/eruda'></script><script>eruda.init();</script>"
+	i.srcdoc = x + settings.preview.pre + e.getValue() + settings.preview.post 
+}
 function openSettings() {
-	var s = {}
-	var f = document.createElement("form")
+	let s = {}
+	let f = document.createElement("form")
 	f.id = "set"
-	f.innerHTML = "<h1>Settings</h1><small>Remove their values to see what the inputs are for. If you don't want to save what you have entered then refresh the page. For more editor related settings, enter ctrl+',' or cmd+',' or use the ... button and select settings</small>"
+	f.innerHTML = "<h1>Settings</h1><small>Remove their values to see what the inputs are for. If you don't want to save what you have entered then refresh the page. For more editor related settings, enter ctrl+',' or cmd+',' or use the ... button, open palette and select settings</small>"
 	s.m = document.createElement("input") //language mode
 	s.m.value = settings.mode
 	s.m.placeholder = "language mode (html, javascript, etc.)"
@@ -56,13 +62,13 @@ function openSettings() {
 	s.pr.placeholder = "HTML code to add before the code entered in ace before it is shown in the preview (\"<?php\", \"<script>\", etc.)"
 	s.pr.oninput = e => settings.preview.pre = e.target.value
 	f.appendChild(s.pr)
-
+	
 	s.po = document.createElement("textarea") //post
 	s.po.value = settings.preview.post
 	s.po.placeholder = "HTML code to add after the code entered in ace before it is shown in the preview (\"?>\", \"</script>\", etc.)"
 	s.po.oninput = e => settings.preview.post = e.target.value
 	f.appendChild(s.po)
-	
+	/*
 	s.v = document.createElement("input") //layout
 	s.l = document.createElement("span")
 	s.v.checked = settings.horizmode
@@ -70,9 +76,28 @@ function openSettings() {
 	s.l.innerText = "Use horizontal layout"
 	s.v.oninput = e => settings.horizmode = e.target.checked
 	s.l.style.position = "absolute"
-	s.v.style.marginLeft = "90vw"
 	f.appendChild(s.l)
 	f.appendChild(s.v)
+	*/
+	s.v = document.createElement("input") //layout
+	s.l = document.createElement("label")
+	s.v.checked = settings.horizmode
+	s.v.type = "checkbox"
+	s.l.innerText = "Use horizontal layout"
+	s.v.oninput = e => settings.horizmode = e.target.checked
+	f.appendChild(s.v)
+	f.appendChild(s.l)
+	
+	f.appendChild(document.createElement("br"))
+	
+	s.v = document.createElement("input") //console
+	s.l = document.createElement("label")
+	s.v.checked = settings.eruda
+	s.v.type = "checkbox"
+	s.l.innerText = "Enable eruda console in preview"
+	s.v.oninput = e => settings.eruda = e.target.checked
+	f.appendChild(s.v)
+	f.appendChild(s.l)
 	
 	s.t = document.createElement("input") //theme
 	s.t.value = settings.font.family
@@ -120,13 +145,13 @@ e.setOptions({
 //save()
 e.on("change", () => {
 	if (settings.live) {
-		i.srcdoc = settings.preview.pre + e.getValue() + settings.preview.post
+		preview()
 	}
 })
 if (settings.autosave) {
 	setTimeout(()=>setInterval(() => save(), settings.autosave * 1000), 1000)
 }
-i.srcdoc = settings.preview.pre + e.getValue() + settings.preview.post
+preview()
 if(settings.horizmode){
 	document.getElementById("editor").style.height = "90vh"
 	document.getElementById("editor").style.width = "49vw"
