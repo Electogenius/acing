@@ -140,7 +140,8 @@ if (localStorage.getItem("code") !== null) {
 }
 e.setOptions({
 	enableLiveAutocompletion: true,
-	fontFamily: settings.font.family
+	fontFamily: settings.font.family,
+	enableSnippets: true
 });
 //save()
 e.on("change", () => {
