@@ -29,7 +29,7 @@ function save() {
 }
 function preview() {
 	let x = ""
-	if(settings.eruda) x = "<script src='https://cdn.jsdelivr.net/npm/eruda'></script><script>eruda.init();</script>"
+	if(settings.eruda) x = "<script src='https://cdn.jsdelivr.net/npm/eruda' onload='eruda.init()'></script>"
 	i.srcdoc = x + settings.preview.pre + e.getValue() + settings.preview.post 
 }
 function openSettings() {
