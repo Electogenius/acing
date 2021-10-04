@@ -30,9 +30,10 @@
 	}
 
 	nav {
-		overflow: auto;
+		overflow-x: auto;
 		white-space: nowrap;
 		height: 30px;
+		overflow-y: hidden;
 	}
 
 	btn {
@@ -103,6 +104,7 @@
 		<btn onclick="e.undo()">undo</btn>
 		<btn onclick="e.redo()">redo</btn>
 		<btn onclick="preview()">run</btn>
+		<btn onclick="full()">showhtm</btn>
 		<btn id="acing"><u>Acing</u></btn>
 	</nav>
 	<div id="editor"></div>
