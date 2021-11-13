@@ -12,11 +12,14 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ext-language_tools.min.js" integrity="sha512-8qx1DL/2Wsrrij2TWX5UzvEaYOFVndR7BogdpOyF4ocMfnfkw28qt8ULkXD9Tef0bLvh3TpnSAljDC7uyniEuQ==" crossorigin="anonymous"></script>
 </head>
 <style>
+	*{
+		cursor: default;
+	}
 	body {
 		background-color: #222;
 		color: white;
 		font-family: -apple-system, sans-serif;
-		overflow: hidden
+		overflow: hidden;
 	}
 
 	#editor {
@@ -62,7 +65,8 @@
 		left: 0;
 		width: 100%;
 		height: 100%;
-		z-index: 200
+		z-index: 200;
+		padding: 10px;
 	}
 
 	input,
@@ -72,20 +76,21 @@
 		width: 90vw;
 		background-color: black;
 		color: white;
+		margin-bottom: 10px;
 	}
 	#acing{
 		font-weight: bolder;
-		color: #05d;
+		color: #000;
 		float: right;
-		background-color: #999;
+		background-color: #fff;
 		border: 1px solid black
 	}
 	#ace_settingsmenu{
 		position: absolute;
-		top: 0;
-		left: 0;
+		top: 10px;
+		left: 10px;
 		color: white !important;
-		background-color: #222;
+		background-color: #000;
 		content: "<button></button>";
 		width: 80vw;
 		height: 70vh;

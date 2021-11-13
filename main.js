@@ -29,14 +29,14 @@ function save() {
 }
 function preview() {
 	let x = ""
-	if(settings.eruda)x = "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/eruda/2.4.1/eruda.min.js\" onload=\"eruda.init()\"></script><script>eruda.init()</script>"
+	if(settings.eruda)x = "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/eruda/2.4.1/eruda.min.js\" onload=\"eruda.init()\"></script>"
 	i.srcdoc = x + settings.preview.pre + e.getValue() + settings.preview.post 
 }
 function openSettings() {
 	let s = {}
 	let f = document.createElement("form")
 	f.id = "set"
-	f.innerHTML = "<h1>Settings</h1><small>Remove their values to see what the inputs are for. If you don't want to save what you have entered then refresh the page. For more editor related settings, enter ctrl+',' or cmd+',' or use the ... button, open palette and select settings</small>"
+	f.innerHTML = "<h1>Settings</h1><small>Remove their values to see what the inputs are for. If you don't want to save what you have entered then refresh the page. For more editor related settings, enter ctrl+',' or cmd+',' or on mobile, use the ... button, open palette and select settings</small>"
 	s.m = document.createElement("input") //language mode
 	s.m.value = settings.mode
 	s.m.placeholder = "language mode (html, javascript, etc.)"
@@ -59,13 +59,13 @@ function openSettings() {
 	
 	s.pr = document.createElement("textarea") //pre
 	s.pr.value = settings.preview.pre
-	s.pr.placeholder = "HTML code to add before the code entered in ace before it is shown in the preview (\"<?php\", \"<script>\", etc.)"
+	s.pr.placeholder = "HTML code to add before the code entered in ace before it is shown in the preview (like \"<script>\")"
 	s.pr.oninput = e => settings.preview.pre = e.target.value
 	f.appendChild(s.pr)
 	
 	s.po = document.createElement("textarea") //post
 	s.po.value = settings.preview.post
-	s.po.placeholder = "HTML code to add after the code entered in ace before it is shown in the preview (\"?>\", \"</script>\", etc.)"
+	s.po.placeholder = "HTML code to add after the code entered in ace before it is shown in the preview (like \"</script>\")"
 	s.po.oninput = e => settings.preview.post = e.target.value
 	f.appendChild(s.po)
 	/*
@@ -166,7 +166,14 @@ e.setOptions(JSON.parse(localStorage.getItem("editor")))
 
 function full() {
 	let x = ""
-	if (settings.eruda) x = "<script src=\"https://cdn.jsdelivr.net/npm/eruda/eruda.js\"></script>"
+	if (settings.eruda) x = "<script src=\"https://cdn.jsdelivr.net/npm/eruda/eruda.js\" onload=\"eruda.init()\"></script>"
 	let htm = x + settings.preview.pre + e.getValue() + settings.preview.post
 	open("https://showhtm.vercel.app/?"+btoa(htm))
 }
+setTimeout(()=>{
+	e.setOptions({
+		enableLiveAutocompletion: true,
+		fontFamily: settings.font.family,
+		enableSnippets: true
+	});
+},500)
