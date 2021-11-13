@@ -166,7 +166,7 @@ e.setOptions(JSON.parse(localStorage.getItem("editor")))
 
 function full() {
 	let x = ""
-	if (settings.eruda) x = "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/eruda/2.4.1/eruda.min.js\" onload=\"eruda.init()\"></script><script>eruda.init()</script>"
+	if (settings.eruda) x = "<script src=\"https://cdn.jsdelivr.net/npm/eruda/eruda.js\"></script>"
 	let htm = x + settings.preview.pre + e.getValue() + settings.preview.post
 	open("https://showhtm.vercel.app/?"+btoa(htm))
 }
