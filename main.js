@@ -12,7 +12,7 @@ var settings = {
 		size: 12,
 		family: "monospace"
 	},
-	eruda: true
+	eruda: true,
 }
 if (localStorage.getItem("settings") === null) {
 	localStorage.setItem("settings", JSON.stringify(settings))
@@ -98,6 +98,17 @@ function openSettings() {
 	s.v.oninput = e => settings.eruda = e.target.checked
 	f.appendChild(s.v)
 	f.appendChild(s.l)
+
+	f.appendChild(document.createElement("br"))
+
+	s.v = document.createElement("input") //live preview
+	s.l = document.createElement("label")
+	s.v.checked = settings.live
+	s.v.type = "checkbox"
+	s.l.innerText = "Live preview"
+	s.v.oninput = e => settings.live = e.target.checked
+	f.appendChild(s.v)
+	f.appendChild(s.l)
 	
 	s.t = document.createElement("input") //theme
 	s.t.value = settings.font.family
@@ -138,6 +149,7 @@ if (localStorage.getItem("code") !== null) {
 	localStorage.setItem("code", def)
 	e.setValue(localStorage.getItem("code"))
 }
+localStorage.setItem("code","")
 e.setOptions({
 	enableLiveAutocompletion: true,
 	fontFamily: settings.font.family,
@@ -152,7 +164,6 @@ e.on("change", () => {
 if (settings.autosave) {
 	setTimeout(()=>setInterval(() => save(), settings.autosave * 1000), 1000)
 }
-preview()
 if(settings.horizmode){
 	document.getElementById("editor").style.height = "90vh"
 	document.getElementById("editor").style.width = "49vw"
