@@ -50,13 +50,6 @@ function openSettings() {
 	s.as.oninput = e => settings.autosave = e.target.value
 	f.appendChild(s.as)
 	
-	s.fs = document.createElement("input") //autosave
-	s.fs.type = "number"
-	s.fs.placeholder = "font size"
-	s.fs.value = settings.font.size
-	s.fs.oninput = e => settings.font.size = e.target.value
-	f.appendChild(s.fs)
-	
 	s.pr = document.createElement("textarea") //pre
 	s.pr.value = settings.preview.pre
 	s.pr.placeholder = "HTML code to add before the code entered in ace before it is shown in the preview (like \"<script>\")"
