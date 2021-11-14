@@ -180,4 +180,5 @@ setTimeout(()=>{
 		fontFamily: settings.font.family,
 		enableSnippets: true
 	});
+	localStorage.setItem("code",e.getValue())
 },500)
