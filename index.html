@@ -113,7 +113,9 @@
 		<btn id="acing"><u>Acing</u></btn>
 	</nav>
 	<div id="editor"></div>
-	<iframe id="i" sandbox="allow-scripts allow-forms allow-modals allow-popups allow-pointer-lock allow-popups-to-escape-sandbox allow-same-origin"></iframe>
+	<iframe id="i" srcdoc="
+	<style>body{background-color:#111;color:#aaa;font-family:system-ui,sans-serif;margin-top:50vh}</style><center>Click/tap the run button</center>
+	" sandbox="allow-scripts allow-forms allow-modals allow-popups allow-pointer-lock allow-popups-to-escape-sandbox allow-same-origin"></iframe>
 	<!-- Project -->
 	<script src="main.js"></script>
 </body>
