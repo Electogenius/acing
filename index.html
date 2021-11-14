@@ -18,7 +18,8 @@
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-	<link rel="manifest" href="/site.webmanifest">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 </head>
 <style>
 	* {
@@ -34,7 +35,7 @@
 
 	#editor {
 		position: absolute;
-		top: 30px;
+		top: 50px;
 		right: 0;
 		bottom: 0;
 		left: 0;
@@ -45,18 +46,21 @@
 	nav {
 		overflow-x: auto;
 		white-space: nowrap;
-		height: 30px;
+		height: 50px;
 		overflow-y: hidden;
 	}
 
 	btn {
-		padding: 0;
+		padding: 5px;
 		border: 1px solid #999;
 		background-color: #222;
 		margin-right: 5px;
 		border-radius: 5px;
 	}
-
+	btn:not(#acing){
+		padding: 5px;
+		padding-top: 10px;
+	}
 	iframe {
 		height: 40vh;
 		display: block;
@@ -117,12 +121,12 @@
 
 <body>
 	<nav>
-		<btn onclick="save()">save</btn>
-		<btn onclick="openSettings()">settings</btn>
-		<btn onclick="e.undo()">undo</btn>
-		<btn onclick="e.redo()">redo</btn>
-		<btn onclick="preview()">run</btn>
-		<btn onclick="full()">showhtm</btn>
+		<btn onclick="save()" title="save"><span class="material-icons">save</span></btn>
+		<btn onclick="openSettings()" title="settings"><span class="material-icons">settings</span></btn>
+		<btn onclick="e.undo()" title="undo"><span class="material-icons">undo</span></btn>
+		<btn onclick="e.redo()" title="redo"><span class="material-icons">redo</span></btn>
+		<btn onclick="preview()" title="run"><span class="material-icons">play_arrow</span></btn>
+		<btn onclick="full()" title="open in showhtm"><span class="material-icons">launch</span></btn>
 		<btn id="acing"><u>Acing</u></btn>
 	</nav>
 	<div id="editor"></div>
