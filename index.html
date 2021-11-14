@@ -42,25 +42,31 @@
 		left: 0;
 		height: 40vh;
 		border: 1px solid white;
+		z-index: 0;
 	}
 
 	nav {
-		overflow-x: auto;
 		white-space: nowrap;
 		height: 50px;
 		overflow-y: hidden;
+		padding-top: 3px;
 	}
 
 	btn {
-		padding: 5px;
+		padding: 3px;
 		border: 1px solid #999;
 		background-color: #222;
 		margin-right: 5px;
 		border-radius: 5px;
+		transition: background-color 0.5s;
 	}
 	btn:not(#acing){
 		padding: 5px;
-		padding-top: 10px;
+		padding-top: 12px;
+		padding-bottom: 0px;
+	}
+	btn:not(#acing):hover{
+		background-color: #000;
 	}
 	iframe {
 		height: 40vh;
@@ -71,6 +77,7 @@
 		margin-right: auto;
 		border: 1px solid white;
 		background-color: white;
+		z-index: 51;
 	}
 
 	form {
@@ -95,11 +102,13 @@
 	}
 
 	#acing {
-		font-weight: bolder;
-		color: #000;
-		float: right;
-		background-color: #fff;
-		border: 1px solid black
+		border: none;
+		background-color: none;
+	}
+
+	img{
+		border-radius: 5px;
+		border: 1px solid white;
 	}
 
 	#ace_settingsmenu {
@@ -122,13 +131,13 @@
 
 <body>
 	<nav>
+		<btn id="acing"><img src="favicon-32x32.png" alt="A"></btn>
 		<btn onclick="save()" title="save"><span class="material-icons">save</span></btn>
 		<btn onclick="openSettings()" title="settings"><span class="material-icons">settings</span></btn>
 		<btn onclick="e.undo()" title="undo"><span class="material-icons">undo</span></btn>
 		<btn onclick="e.redo()" title="redo"><span class="material-icons">redo</span></btn>
 		<btn onclick="preview()" title="run"><span class="material-icons">play_arrow</span></btn>
 		<btn onclick="full()" title="open in showhtm"><span class="material-icons">launch</span></btn>
-		<btn id="acing"><u>Acing</u></btn>
 	</nav>
 	<div id="editor"></div>
 	<iframe id="i" srcdoc="

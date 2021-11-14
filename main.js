@@ -162,7 +162,7 @@ if(settings.horizmode){
 	document.getElementById("editor").style.width = "49vw"
 	i.style.height = "90vh"
 	i.style.width = "49vw"
-	i.style.margin = 0
+	i.style.margin = "0"
 	i.style.marginLeft = "49vw"
 }
 e.setFontSize(Number(settings.font.size))
