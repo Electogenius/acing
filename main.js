@@ -23,9 +23,10 @@ if (localStorage.getItem("settings") === null) {
 //pe.setTheme("ace/theme/" + settings.theme);
 e.session.setMode("ace/mode/" + settings.mode);
 
-let Emmet = require("ace/ext/emmet");
-e.setOption("enableEmmet", true);
-
+window.addEventListener("DOMContentLoaded",()=>{
+	let Emmet = require("ace/ext/emmet");
+	e.setOption("enableEmmet", true);
+})
 
 function save() {
 	localStorage.setItem("code", e.getValue());
