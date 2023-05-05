@@ -120,7 +120,7 @@ function openSettings() {
 	f.onsubmit = (e) => {
 		save()
 		localStorage.setItem("settings", JSON.stringify(settings))
-		window.location = window.location.href
+		location.reload()
 	}
 	document.body.appendChild(f)
 	s = undefined;
