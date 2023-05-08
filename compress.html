@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Redirecting...</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"></script>
+</head>
+<body>
+	<script>
+		const compressed = LZString.compressToBase64(decodeURIComponent(location.search.slice(1)))
+		location = "https://showhtm.vercel.app/c?" + compressed
+	</script>
+</body>
+</html>
