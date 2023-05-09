@@ -34,17 +34,21 @@
 <body>
 	<nav>
 		<btn id="acing"><img src="favicon-32x32.png" alt="A"></btn>
-		<btn onclick="save()" title="save"><span class="material-icons">save</span></btn>
-		<btn onclick="openSettings()" title="settings"><span class="material-icons">settings</span></btn>
-		<btn onclick="e.undo()" title="undo"><span class="material-icons">undo</span></btn>
-		<btn onclick="e.redo()" title="redo"><span class="material-icons">redo</span></btn>
-		<btn onclick="preview()" title="run"><span class="material-icons">play_arrow</span></btn>
-		<btn onclick="full()" title="open in showhtm"><span class="material-icons">launch</span></btn>
+		<btn onclick="save()" title="Save"><span class="material-icons">save</span></btn>
+		<btn onclick="openSettings()" title="Settings"><span class="material-icons">settings</span></btn>
+		<span class="joind">
+			<btn onclick="e.undo()" title="Undo"><span class="material-icons">undo</span></btn>
+			<btn onclick="e.redo()" title="Redo"><span class="material-icons">redo</span></btn>
+		</span>
+		<btn onclick="preview()" title="Run"><span class="material-icons">play_arrow</span></btn>
+		<btn onclick="full()" title="Open in new window"><span class="material-icons">launch</span></btn>
 	</nav>
-	<div id="editor"></div>
-	<iframe id="i" srcdoc="
-	<style>body{background-color:#111;color:#aaa;font-family:sans-serif;margin-top:50vh}</style><center>Click/tap the run button</center>
-	" sandbox="allow-scripts allow-forms allow-modals allow-popups allow-pointer-lock allow-popups-to-escape-sandbox allow-same-origin"></iframe>
+	<div id="main">
+		<div id="editor"></div>
+		<iframe id="i" srcdoc="
+		<style>body{background-color:#111;color:#aaa;font-family:sans-serif;margin-top:50vh}</style><center>Click/tap the run button</center>
+		" sandbox="allow-scripts allow-forms allow-modals allow-popups allow-pointer-lock allow-popups-to-escape-sandbox allow-same-origin"></iframe>
+	</div>
 	<!-- Project -->
 	<script src="main.js"></script>
 </body>

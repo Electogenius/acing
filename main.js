@@ -11,7 +11,7 @@ var settings = {
 		size: 12,
 		family: "monospace"
 	},
-	eruda: false,
+	eruda: false
 }
 if (localStorage.getItem("settings") === null) {
 	localStorage.setItem("settings", JSON.stringify(settings))
@@ -22,16 +22,15 @@ if (localStorage.getItem("settings") === null) {
 //pe.setTheme("ace/theme/" + settings.theme);
 e.session.setMode("ace/mode/html")
 
-window.addEventListener("DOMContentLoaded", () => {
+// window.addEventListener("DOMContentLoaded", () => {
 	let Emmet = require("ace/ext/emmet");
 	e.setOption("enableEmmet", true);
-});
+// });
 
 function save() {
 	localStorage.setItem("code", e.getValue());
 	localStorage.setItem("editor", JSON.stringify(e.getOptions()))
 }
-save()
 
 function preview() {
 	let x = ""
@@ -137,7 +136,7 @@ var def =
 </body>
 
 </html>`
-if (localStorage.getItem("code") !== null) {
+if (localStorage.getItem("code") !== null && localStorage.code !== "") {
 	e.setValue(localStorage.getItem("code"))
 } else {
 	localStorage.setItem("code", def)
