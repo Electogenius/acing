@@ -122,19 +122,17 @@ function openSettings() {
 	s = undefined;
 }
 var def =
-	`<!DOCTYPE html>
+`<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
+\t<meta charset="UTF-8">
+\t<meta name="viewport" content="width=device-width, initial-scale=1.0">
+\t<meta http-equiv="X-UA-Compatible" content="ie=edge">
+\t<title></title>
 </head>
-
 <body>
-
+\t
 </body>
-
 </html>`
 if (localStorage.getItem("code") !== null && localStorage.code !== "") {
 	e.setValue(localStorage.getItem("code"))
